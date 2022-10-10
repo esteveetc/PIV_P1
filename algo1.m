@@ -1,4 +1,4 @@
-%ALGO1
+%ALGO1 borrrrrrar
 
 im = imread('1_P_hgr1_id03_1.jpg');
 
