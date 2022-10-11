@@ -1,4 +1,4 @@
-%ALGO1 borrrrrrar
+%ALGO1
 
 primeraFoto = 1;
 
