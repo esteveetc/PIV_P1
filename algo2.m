@@ -1,3 +1,4 @@
+%ALGO2
 function [BW] = algo2(RGB)
 
 %Identifiquem els parametres de la imatge
@@ -35,6 +36,6 @@ for k=1 : rows
 end
 
 %Mostrem la mascara
-imshow(BW);
+%imshow(BW);
 
 end
