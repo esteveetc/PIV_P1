@@ -10,7 +10,7 @@ theFiles = dir(filePattern);
 
 %recorrem els fitxers
 %for k = 1 : length(theFiles)
-for k = 10 : 20
+for k = 1 : length(theFiles)
     baseFileName = theFiles(k).name;
     fullFileName = fullfile(theFiles(k).folder, baseFileName);
     fprintf('Now processing... %s\n', fullFileName);
@@ -19,4 +19,5 @@ for k = 10 : 20
     Mask = algo2(fullFileName);
     
     imshow(Mask);
+    pause;
 end
