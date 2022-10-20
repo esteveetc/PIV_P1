@@ -8,10 +8,10 @@ filePattern = fullfile(myFolder, '*.jpg'); % Change to whatever pattern you need
 
 theFiles = dir(filePattern);
 
+%%%BUCLE
 %recorrem els fitxers
-%for k = 1 : length(theFiles)
 for k = 1 : length(theFiles)
-    baseFileName = theFiles(k).name;
+baseFileName = theFiles(k).name;
     fullFileName = fullfile(theFiles(k).folder, baseFileName);
     fprintf('Now processing... %s\n', fullFileName);
     im = imread(fullFileName);
@@ -21,3 +21,11 @@ for k = 1 : length(theFiles)
     imshow(Mask);
     pause;
 end
+
+
+%%%FOTO X FOTO
+%im = imread("/Users/esteve/Desktop/PIV_P1/DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Training-Dataset/Images/3_A_hgr2B_id06_1.jpg");
+%Mask = algo2("/Users/esteve/Desktop/PIV_P1/DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Training-Dataset/Images/3_A_hgr2B_id06_1.jpg");
+    
+%imshow(Mask);
+    
