@@ -34,19 +34,20 @@ for k = 1 : length(theFiles)
 
     %Passem les matrius de crominancies a vectors
     tmpMask=imread(myFolder2 + maskFileName);
-    tmpMask = ~tmpMask;
+    tmpMask = 1-tmpMask;
     
     
-    Cbmask = Cb(tmpMask);
-    Crmask = Cr(tmpMask);
+    Cbmask = Cb*tmpMask;
+    Crmask = Cr*tmpMask;
+    
     
     
 
     %Passem els valors dels vectors de crominancies a una matriu de parelles de valors
-    data = [Cbmask,Crmask];
+    data = [CbArray,CrArray];
 
     %Creem l'histograma
-    H=hist3(data,'Edges',{0:255 0:255},'CDataMode','auto','FaceColor','interp');
+    H=hist3(data,'Ctrs',{0:1:255 0:1:255},'CDataMode','auto','FaceColor','interp');
     HFinal=HFinal+H;
     
 

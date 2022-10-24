@@ -12,11 +12,11 @@ Cr = double(Cr1);
 
 %Definim uns llindars per crear la mascara (basats en l'histograma del
 %ALGO1)
-minCb = 100;
-maxCb = 140;
+minCb = 112;
+maxCb = 125;
 
-minCr = 130;
-maxCr = 160;
+minCr = 135;
+maxCr = 155;
 
 %Guardem la mida de la imatge
 [rows, cols, val]=size(YCBCRim);
