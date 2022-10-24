@@ -10,7 +10,7 @@ YCBCRim = rgb2ycbcr(I);
 Cb = double(Cb1);
 Cr = double(Cr1);
 
-%Definim uns llindars per crear la mascara (basats en l'histograma del
+%Definim uns llindars per crear la  mascara (basats en l'histograma del
 %ALGO1)
 minCb = 112;
 maxCb = 125;

@@ -42,7 +42,7 @@ for k = 1 : length(theFiles)
     
     
 
-    %Passem els valors dels vectors de crominancies a una matriu de parelles de valors
+    %Passem els valors dels vectors de  crominancies a una matriu de parelles de valors
     data = [Cbmask,Crmask];
 
     %Creem l'histograma

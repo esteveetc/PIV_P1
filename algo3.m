@@ -24,7 +24,7 @@ end
 
 
 %%%FOTO X FOTO
-%im = imread("/Users/esteve/Desktop/PIV_P1/DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Training-Dataset/Images/3_A_hgr2B_id06_1.jpg");
+%im =  imread("/Users/esteve/Desktop/PIV_P1/DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Training-Dataset/Images/3_A_hgr2B_id06_1.jpg");
 %Mask = algo2("/Users/esteve/Desktop/PIV_P1/DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Training-Dataset/Images/3_A_hgr2B_id06_1.jpg");
     
 %imshow(Mask);
