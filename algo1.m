@@ -1,7 +1,5 @@
 %ALGO1
 
-primeraFoto = 1;
-
 % Especifiquem el directori de les imatges de training
 myFolder = 'DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Training-Dataset/Images/';
 
