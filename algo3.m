@@ -19,6 +19,8 @@ baseFileName = theFiles(k).name;
     Mask = algo2(fullFileName);
     
     imshow(Mask);
+    %%%%%% HEM DE FER QUE ES GUARDIN A UNA CRPETA MASKS ELS RESULTATS S%%%%%%
+    imwrite (Mask, fullFileName+'.png', 'png');
     pause;
 end
 
