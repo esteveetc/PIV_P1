@@ -8,10 +8,13 @@ filePattern = fullfile(myFolder, '*.jpg'); % Change to whatever pattern you need
 
 theFiles = dir(filePattern);
 
+%Creem la carpeta "Masks" la qual utilitzarem per guardar les mascares
+mkdir("Masks");
+
 %%%BUCLE
 %recorrem els fitxers
 for k = 1 : length(theFiles)
-baseFileName = theFiles(k).name;
+    baseFileName = theFiles(k).name;
     fullFileName = fullfile(theFiles(k).folder, baseFileName);
     fprintf('Now processing... %s\n', fullFileName);
     im = imread(fullFileName);
@@ -19,15 +22,16 @@ baseFileName = theFiles(k).name;
     Mask = algo2(fullFileName);
     
     imshow(Mask);
-    %%%%%% HEM DE FER QUE ES GUARDIN A UNA CRPETA MASKS ELS RESULTATS S%%%%%%
-    imwrite (Mask, fullFileName+'.png', 'png');
+    
+    %Guardem la mascara en la carpeta "Masks"
+    %%%Podem posar directament el algo2 dins del imwrite()
+    imwrite(Mask,"Masks\"+(baseFileName));
+    
     pause;
 end
-
 
 %%%FOTO X FOTO
 %im =  imread("/Users/esteve/Desktop/PIV_P1/DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Training-Dataset/Images/3_A_hgr2B_id06_1.jpg");
 %Mask = algo2("/Users/esteve/Desktop/PIV_P1/DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Training-Dataset/Images/3_A_hgr2B_id06_1.jpg");
     
 %imshow(Mask);
-    
