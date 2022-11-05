@@ -38,32 +38,31 @@ for k = 1 : length(theFilesMask)
  
  [rows, cols, val]=size(Mask);
  
- Mask1 = Mask/255;
- 
- 
+ double i;
  for i = 1 : rows
      for j = 1 : cols
-        if ((Mask1(i,j)==IdealMask(i,j)) && Mask1(i,j)==1)
+         %N = N+1;
+        if ((Mask(i,j)==IdealMask(i,j)) && Mask(i,j)==1)
             tp = tp + 1;
-        elseif ((Mask1(i,j)==IdealMask(i,j)) && Mask1(i,j)==0)
+        elseif ((Mask(i,j)==IdealMask(i,j)) && Mask(i,j)==0)
             tn = tn + 1;
-        elseif ((Mask1(i,j)~=IdealMask(i,j)) && Mask1(i,j)==1)
+        elseif ((Mask(i,j)~=IdealMask(i,j)) && Mask(i,j)==1)
              fp = fp + 1;  
-        else %((Mask1(i,j)~=IdealMask(i,j)) && Mask1(i,j)==0))
+        else %((Mask(i,j)~=IdealMask(i,j)) && Mask(i,j)==0))
             fn = fn + 1;
         end
      end
  end
 end
 
-double precision;
-double recall;
-double fscore;
+float precision;
+float recall;
+float fscore;
 
 precision = tp/(tp+fp);
 recall = tp/(tp+fn);
 %formula Fscore
-fscore = 2*((precision*recall)/(precision+recall));
+Fscore = 2*((precision*recall)/(precision+recall));
 
 fprintf("****Summary****\nAvarage precision: %f \n", precision);
 fprintf("Avarage recall: %f \n", recall);

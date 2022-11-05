@@ -1,7 +1,7 @@
 %ALGO3
 
 % Especifiquem el directori de les imatges de training
-myFolder = 'DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Training-Dataset/Images/';
+myFolder = 'DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Validation-Dataset/Images/';
 
 % Fem una llista amb tots els fitxers .jpg
 filePattern = fullfile(myFolder, '*.jpg'); % Change to whatever pattern you need.
@@ -27,7 +27,7 @@ for k = 1 : length(theFiles)
     %%%Podem posar directament el algo2 dins del imwrite()
     baseFileNameCut = erase(baseFileName, "jpg");
     baseFileNameCut = baseFileNameCut +"bmp";
-    imwrite(algo2(fullFileName)/255,"Masks\"+ baseFileNameCut);
+    imwrite(algo2(fullFileName),"Masks\"+ baseFileNameCut);
     
    % pause;
 end
