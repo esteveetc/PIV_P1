@@ -2,7 +2,7 @@
 
 %Obrim la carpeta MASKS
 % Especifiquem el directori de les masqueres ideals
-FolderMask = 'MASKS/';
+FolderMask = 'Masks/';
 % Fem una llista amb tots els fitxers .jpg
 filePatternMask = fullfile(FolderMask, '*.jpg'); % Change to whatever pattern you need.
 theFilesMask = dir(filePatternMask);
@@ -10,23 +10,21 @@ theFilesMask = dir(filePatternMask);
 %Obrim la carpeta MasksIdeal
 FolderMaskIdeal = 'DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Validation-Dataset/Masks-Ideal/';
 % Fem una llista amb tots els fitxers .jpg
-filePatternMaskIdeal = fullfile(FolderMaskIdeal, '*.jpg'); % Change to whatever pattern you need.
+filePatternMaskIdeal = fullfile(FolderMaskIdeal, '*.bmp'); % Change to whatever pattern you need.
 theFilesMaskIdeal = dir(filePatternMaskIdeal);
 
-
-float tp; %true positives
-float tn; %true negatives
-float fp; %false positives
-float fn; %false negative
-
-int N;
+double tp; %true positive
+double  tn; %true negatives
+double  fp; %false positives
+double fn; %false negative
+%int N;
 
 %comparem la maskara generada amb la ideal
 for k = 1 : length(theFilesMask)
  %Obrim les dues imatges
  baseFileNameMask = theFilesMask(k).name;
  fullFileNameMask = fullfile(theFilesMask(k).folder, baseFileNameMask);
- Mask = imread(fullFileNameNameMask);
+ Mask = imread(fullFileNameMask);
  
  baseFileNameMaskIdeal = theFilesMaskIdeal(k).name;
  fullFileNameMaskIdeal = fullfile(theFilesMaskIdeal(k).folder, baseFileNameMaskIdeal);
@@ -49,6 +47,7 @@ for k = 1 : length(theFilesMask)
             fn = fn +1;
         end
      end
+ end
 end
 
 float precision;

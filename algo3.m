@@ -19,15 +19,17 @@ for k = 1 : length(theFiles)
     fprintf('Now processing... %s\n', fullFileName);
     im = imread(fullFileName);
     
-    Mask = algo2(fullFileName);
+    %Mask = ;
     
-    imshow(Mask);
+    %imshow(Mask);
     
     %Guardem la mascara en la carpeta "Masks"
     %%%Podem posar directament el algo2 dins del imwrite()
-    imwrite(Mask,"Masks\"+(baseFileName));
+    baseFileNameCut = erase(baseFileName, "jpg");
+    baseFileNameCut = baseFileNameCut +"bmp";
+    imwrite(algo2(fullFileName)/255,"Masks\"+ baseFileNameCut);
     
-    pause;
+   % pause;
 end
 
 %%%FOTO X FOTO
