@@ -8,7 +8,6 @@ filePattern = fullfile(myFolder, '*.jpg'); % Change to whatever pattern you need
 
 myFolder2 = 'DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Training-Dataset/Masks-Ideal/';
 
-
 theFiles = dir(filePattern);
 
 H = [];
@@ -27,8 +26,7 @@ for k = 1 : length(theFiles)
     
     % passem de rgb a ycbcr
     YCBCRim = rgb2ycbcr(im);
-    [Y Cb Cr] = imsplit(YCBCRim);
-
+    [Y, Cb, Cr] = imsplit(YCBCRim);
 
     %Passem les matrius de crominancies a vectors
     tmpMask=imread(myFolder2 + maskFileName);
@@ -38,8 +36,6 @@ for k = 1 : length(theFiles)
     Cbmask = Cb(tmpMask);
     Crmask = Cr(tmpMask);
     
-    
-
     %Passem els valors dels vectors de  crominancies a una matriu de parelles de valors
     data = [Cbmask,Crmask];
 
@@ -47,16 +43,9 @@ for k = 1 : length(theFiles)
     H=hist3(data,'Edges',{0:255 0:255},'CDataMode','auto','FaceColor','interp');
     HFinal=HFinal+H;
     
-
 end
 
-%normalitzem els valors dels vectors de crominancia depenent de les fotos
-%analitzades
-%CbTotal = CbTotal/length(theFiles);
-%CrTotal = CrTotal/length(theFiles);
-
 bar3(HFinal);
-
 
 % H=hist3(data,'Ctrs',{0:1:255 0:1:255},'CDataMode','auto','FaceColor','interp');
 

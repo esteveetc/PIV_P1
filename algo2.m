@@ -6,20 +6,20 @@ I = imread(RGB);
 
 %Cambiem l'espai de color de la imatge a YCBCr
 YCBCRim = rgb2ycbcr(I);
-[Y Cb1 Cr1] = imsplit(YCBCRim);
+[~, Cb1, Cr1] = imsplit(YCBCRim);
 Cb = double(Cb1);
 Cr = double(Cr1);
 
 %Definim uns llindars per crear la  mascara (basats en l'histograma del
 %ALGO1)
-minCb = 112;
-maxCb = 125;
+minCb = 110;
+maxCb = 135;
 
-minCr = 135;
+minCr = 136;
 maxCr = 155;
 
 %Guardem la mida de la imatge
-[rows, cols, val]=size(YCBCRim);
+[rows, cols, ~]=size(YCBCRim);
 
 %Creem una matriu de zeros de la mida de la imatge
 BW = ones(rows,cols);
