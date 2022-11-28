@@ -1,9 +1,9 @@
 %ALGO5
-function [n] = algo5(BW)
+%function [n] = algo5(BW)
 
 %obrim mask de una imatge
 
-Mask = imread(BW);
+Mask = imread("maskProva.bmp");
 %imshow(Mask);
 n=-1;
 
@@ -31,13 +31,17 @@ for k=1 : rows
         end
 end
 
-SE = ones(16,16);
 
-ImDi = imdilate(D,SE);
-ImOp = imopen(ImDi,SE);
-ImEr = imerode(ImOp,SE);
+%SE = ones(16,16);
 
-CC=bwconncomp(ImDi);
+SE1 = load('SE1.mat');
+
+
+%ImDi = imdilate(D,SE1);
+ImOp = imopen(D,SE1.SE);
+%ImEr = imerode(ImOp,SE1);
+
+CC=bwconncomp(ImOp);
 n=CC.NumObjects;
 
 figure
@@ -47,7 +51,7 @@ subplot(1,4,2), imshow(Dist1), title('Euclidean')
 hold on,
 subplot(1,4,3), imshow(D), title('Umbral')
 hold on,
-subplot(1,4,4), imshow(ImDi), title('Opening')
+subplot(1,4,4), imshow(ImOp), title('Opening')
 hold on,
 
-end
+%end
