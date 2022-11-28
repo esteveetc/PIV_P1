@@ -22,14 +22,14 @@ maxCr = 155;
 [rows, cols, ~]=size(YCBCRim);
 
 %Creem una matriu de zeros de la mida de la imatge
-BW = ones(rows,cols);
+BW = zeros(rows,cols);
 
 %Recorrem la imatge comparant les crominancies per crear la mascara
 for k=1 : rows
         for l=1 : cols
             if (Cb(k,l)>= minCb && Cb(k,l) <= maxCb && Cr(k,l)>= minCr && Cr(k,l) <= maxCr)
                 
-               BW(k,l) = 0;
+               BW(k,l) = 1;
                 
             end
         end

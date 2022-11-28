@@ -3,10 +3,11 @@
 % Especifiquem el directori de les imatges de training
 myFolder = 'DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Training-Dataset/Images/';
 
-% Fem una llista amb tots els fitxers .jpg
-filePattern = fullfile(myFolder, '*.jpg'); % Change to whatever pattern you need.
-
+% Especifiquem el directori de les màscares
 myFolder2 = 'DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Training-Dataset/Masks-Ideal/';
+
+% Fem una llista amb tots els fitxers .jpg
+filePattern = fullfile(myFolder, '*.jpg');
 
 theFiles = dir(filePattern);
 
@@ -24,7 +25,7 @@ for k = 1 : length(theFiles)
     
     maskFileName = baseFileName(1:length(baseFileName)-3)+"bmp";
     
-    % passem de rgb a ycbcr
+    % Passem de RGB a YCbCr
     YCBCRim = rgb2ycbcr(im);
     [Y, Cb, Cr] = imsplit(YCBCRim);
 
@@ -45,10 +46,8 @@ for k = 1 : length(theFiles)
     
 end
 
+%Mostrem per pantalla el resultat final
 bar3(HFinal);
-
-% H=hist3(data,'Ctrs',{0:1:255 0:1:255},'CDataMode','auto','FaceColor','interp');
-
 
 
 
