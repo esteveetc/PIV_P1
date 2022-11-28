@@ -32,22 +32,25 @@ for k=1 : rows
 end
 
 SE = ones(16,16);
+SE2 = ones (11,11);
 
-ImDi = imdilate(D,SE);
-ImOp = imopen(ImDi,SE);
-ImEr = imerode(ImOp,SE);
+ImDi = imdilate(D,SE2);
+ImEr = imerode(ImDi,SE2);
 
-CC=bwconncomp(ImDi);
+ImOp = imopen(D,SE);
+
+
+CC=bwconncomp(ImOp);
 n=CC.NumObjects;
 
 figure
-subplot(1,4,1), imshow(Mask), title('Original')
+subplot(2,2,1), imshow(Mask), title('Original')
 hold on, 
-subplot(1,4,2), imshow(Dist1), title('Euclidean')
+subplot(2,2,2), imshow(Dist1), title('Euclidean')
 hold on,
-subplot(1,4,3), imshow(D), title('Umbral')
+subplot(2,2,3), imshow(D), title('Umbral')
 hold on,
-subplot(1,4,4), imshow(ImDi), title('Opening')
+subplot(2,2,4), imshow(ImOp), title('Opening')
 hold on,
 
 end
