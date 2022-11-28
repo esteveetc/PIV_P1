@@ -31,14 +31,15 @@ for k=1 : rows
         end
 end
 
-SE = ones(16,16);
-SE2 = ones (11,11);
 
-ImDi = imdilate(D,SE2);
-ImEr = imerode(ImDi,SE2);
+%SE = ones(16,16);
 
-ImOp = imopen(D,SE);
+SE1 = load('SE1.mat');
 
+
+%ImDi = imdilate(D,SE1);
+ImOp = imopen(D,SE1.SE);
+%ImEr = imerode(ImOp,SE1);
 
 CC=bwconncomp(ImOp);
 n=CC.NumObjects;
@@ -51,6 +52,7 @@ hold on,
 subplot(2,2,3), imshow(D), title('Umbral')
 hold on,
 subplot(2,2,4), imshow(ImOp), title('Opening')
-hold on,
+
+
 
 end
