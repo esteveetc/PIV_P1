@@ -48,13 +48,12 @@ SE2 = ones(40,40);
 SE3 = ones(13,13);
 SE4 = ones(18,18);
 SE1 = ones(5,5);
-SE5 = ones(1,1);
 
 if(maxVal<=50)
     fprintf('utilitzem el petit \n');
-    
-    ImOp1 = imerode(D,SE5);
-    ImOp2 = imopen(ImOp1,SE3);
+    %ImOp = imdilate(D,SE3);
+    %ImOp1 = imerode(ImOp,SE3);
+    ImOp2 = imopen(D,SE3);
     
 else
     fprintf('utilitzem el gran \n');
@@ -81,9 +80,9 @@ if(areaa>0)
     ImOp2 = imerode(ImOp,SE2);
     ImCrop = imcrop(ImOp2,[cols/6,rows/6,cols*5/6,rows*5/6]); 
     ImCrop = imerode(ImCrop,SE1);
+    cropErode = imerode(ImCrop,SE4);
     CC=bwconncomp(ImCrop);
     n=CC.NumObjects;
-    cropErode = imerode(ImCrop,SE4);
     areaa=bwarea(cropErode);
     areaa = areaa /(rows*cols);
     fprintf('area = %f\n',areaa);
