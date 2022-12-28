@@ -11,6 +11,11 @@ theFiles = dir(filePattern);
 %Creem la carpeta "Masks" la qual utilitzarem per guardar les mascares
 %mkdir("Masks");
 
+double macroF1;
+double acc;
+macroF1 = 0;
+acc = 0;
+
 dolentes = 0;
 %Recorrem els fitxers
 for k = 1 : length(theFiles)
@@ -24,14 +29,28 @@ for k = 1 : length(theFiles)
     %pause;
     
     dits = extract(baseFileName,1);
-    dits = str2double(dits);
-    if(n ~= dits)
-       dolentes = dolentes + 1; 
-    end
-        
+    dits = str2double(dits);     
     
+    if(n ~= dits)
+        dolentes = dolentes + 1; 
+    end
+    
+    [fscore, recall, precision] = algo7(n, dits);
+    
+    macroF1 = macroF1 + fscore;
 end
-fprintf("Imatges fallades: %d\n\n",dolentes);
-p = ((75-dolentes)/75)*100;
-fprintf("Percentatge acert: %i \n",p);
+
+%Accuracy
+
+ 
+acc = ((length(theFiles) - dolentes) / length(theFiles)) * 100;
+
+macroF1 = macroF1 / length(theFiles);
+
+%Mostrem per pantalla els valors trobats
+fprintf("\n****Summary****\nAvarage precision: %f \n", precision);
+fprintf("Avarage recall: %f \n", recall);
+fprintf("\nF-Score: %f \n", macroF1);
+fprintf("Percentatge acert: %i \n", acc);
+
 
