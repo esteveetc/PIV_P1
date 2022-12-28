@@ -31,7 +31,7 @@ for k = 1 : length(theFiles)
         
     
 end
-fprintf("Fallos: %d\n\n",dolentes);
+fprintf("Imatges fallades: %d\n\n",dolentes);
 p = ((75-dolentes)/75)*100;
 fprintf("Percentatge acert: %i \n",p);
 
