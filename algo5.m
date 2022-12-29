@@ -1,4 +1,3 @@
-
 %ALGO5
 function [n] = algo5(BW)
 
@@ -44,24 +43,24 @@ end
 
 %%%%% fer petit el petit se i fer un humbral mes, arreglar error fusio dits
 
-SE0 = ones(25,25);
-SE1 = ones(5,5);
-SE2 = ones(40,40);
-SE3 = ones(13,13);
-SE4 = ones(18,18);
+ SE0 = ones(25,25);
+ SE1 = ones(5,5);
+ SE2 = ones(40,40);
+ SE3 = ones(13,13);
+ SE4 = ones(18,18);
 
-% SE0 = load('SE0.mat', 'SE0');
-% SE1 = load('SE1.mat', 'SE1Copy');
-% SE2 = load('SE2.mat', 'SE2');
-% SE3 = load('SE3.mat', 'SE1CopyCopy');
-% SE4 = load('SE4.mat', 'SE4');
-% 
-% SE0 = SE0.SE0; %rodona radi 18x18 
-% SE1 = SE1.SE1Copy; %rodona radi 5x5 
-% SE2 = SE2.SE2; %rodona radi 40x40 
+%  SE0 = load('SE0.mat', 'SE0');
+%  SE1 = load('SE1.mat', 'SE1Copy');
+%  SE2 = load('SE2.mat', 'SE2');
+%  SE3 = load('SE3.mat', 'SE1CopyCopy');
+%  SE4 = load('SE4.mat', 'SE4');
 %  
-% SE3 = SE3.SE1CopyCopy; %rodona radi 13x13 
-% SE4 = SE4.SE4; %rodona radi 18x18 
+%  SE0 = SE0.SE0; %rodona radi 18x18 
+%  SE1 = SE1.SE1Copy; %rodona radi 5x5 
+%  SE2 = SE2.SE2; %rodona radi 40x40 
+%   
+%  SE3 = SE3.SE1CopyCopy; %rodona radi 13x13 
+%  SE4 = SE4.SE4; %rodona radi 18x18 
 SE5 = ones(1,1);
 
 
