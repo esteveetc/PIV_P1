@@ -49,18 +49,6 @@ end
  SE3 = ones(13,13);
  SE4 = ones(18,18);
 
-%  SE0 = load('SE0.mat', 'SE0');
-%  SE1 = load('SE1.mat', 'SE1Copy');
-%  SE2 = load('SE2.mat', 'SE2');
-%  SE3 = load('SE3.mat', 'SE1CopyCopy');
-%  SE4 = load('SE4.mat', 'SE4');
-%  
-%  SE0 = SE0.SE0; %rodona radi 18x18 
-%  SE1 = SE1.SE1Copy; %rodona radi 5x5 
-%  SE2 = SE2.SE2; %rodona radi 40x40 
-%   
-%  SE3 = SE3.SE1CopyCopy; %rodona radi 13x13 
-%  SE4 = SE4.SE4; %rodona radi 18x18 
 SE5 = ones(1,1);
 
 
@@ -97,37 +85,44 @@ if(areaa>0)
    % fprintf('Utilitzem el petit pq el gran es solapa \n');
     ImOp = imdilate(D,SE4);
     ImOp2 = imerode(ImOp,SE2);
-    ImOp2 = ImOp2.*~Mask;
-    ImCrop = imcrop(ImOp2,[cols/6,rows/6,cols*5/6,rows*5/6]); 
-    ImCrop = imerode(ImCrop,SE1);
+    ImTMP = ImOp2;
     
-    CC=bwconncomp(ImOp2);
+    ImOp2 = ImOp2.*(~Mask);
+   
+    
+    ImCrop = imcrop(ImOp2,[cols/6,rows/6,cols*5/6,rows*5/6]); 
+    %ImCrop = imerode(ImCrop,SE1);
+    
+    CC=bwconncomp(ImCrop);
     n=CC.NumObjects;
-    cropErode = imerode(ImCrop,SE4);
-    areaa=bwarea(cropErode);
-    areaa = areaa /(rows*cols);
-    fprintf('Àrea = %f\n', areaa);
-    if(areaa>0 && n<=2 && areaa>0 && areaa<=0.01)
-        n=n+1;
-    elseif(areaa>0.01 && n<=2 && areaa<0.012)
-        n=n+2;
-    elseif(areaa>0.012 && n<=2)
-        n=n+3;
-    end
+    %cropErode = imerode(ImCrop,SE4);
+    %areaa=bwarea(cropErode);
+    %areaa = areaa /(rows*cols);
+    %fprintf('Àrea = %f\n', areaa);
+    
+
+    %if(areaa>0 && n<=2 && areaa>0 && areaa<=0.01)
+    %    n=n+1;
+    %elseif(areaa>0.01 && n<=2 && areaa<0.012)
+    %    n=n+2;
+    %elseif(areaa>0.012 && n<=2)
+    %    n=n+3;
+    %end
+       figure
+   subplot(2,2,1), imshow(Mask), title('Original')
+    hold on, 
+    subplot(2,2,2), imshow(ImTMP), title('Euclidean')
+    hold on,
+    subplot(2,2,3), imshow(ImOp2), title('Umbral')
+    hold on,
+   subplot(2,2,4), imshow(cropErode), title('Opening')
+   pause;
 end
 
 if(n>5)
     n=5;
 end
-% 
-% figure
-% subplot(2,2,1), imshow(Mask), title('Original')
-% hold on, 
-% subplot(2,2,2), imshow(ImOp2), title('Euclidean')
-% hold on,
-% subplot(2,2,3), imshow(ImCrop), title('Umbral')
-% hold on,
-% subplot(2,2,4), imshow(cropErode), title('Opening')
-% pause;
+
+
 
 end
