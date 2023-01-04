@@ -1,4 +1,5 @@
-%Algo7
+%ALGO7
+
 function [fscore, recall, precision] = algo7(n,dits)
 %F-Score
 

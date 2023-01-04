@@ -1,20 +1,17 @@
 %ALGO6
 
-% Especifiquem el directori de les imatges de training
+%tic
+% Especifiquem el directori de les imatges
 myFolder = 'DataBase Train-Valid Prog 1 i 2/DataBase Train-Valid Prog 1  i  2/Validation-Dataset/Masks-Ideal/';
 
 % Fem una llista amb tots els fitxers .bmp
 filePattern = fullfile(myFolder, '*.bmp'); % Change to whatever pattern you need.
-
 theFiles = dir(filePattern);
 
-%Creem la carpeta "Masks" la qual utilitzarem per guardar les mascares
-%mkdir("Masks");
-
 %Creem una carpeta on adjuntarem un .txt amb el numero de dits que detectem
-mkdir("Predictions");
+mkdir("Finger");
 
-
+%Creem les variables i inicialitzem 
 double macroF1;
 double macroRec;
 double macroPrec;
@@ -27,11 +24,12 @@ dolentes = 0;
 
 %Recorrem els fitxers
 for k = 1 : length(theFiles)
+   
     close all;
     baseFileName = theFiles(k).name;
     fullFileName = fullfile(theFiles(k).folder, baseFileName);
     
-    %im = imread(fullFileName);
+    %Apliquem algoritme 5 i mostrem per per pantalla els dits detecats
     n=algo5(fullFileName);
     fprintf('Processed image %s  -->  Number of fingers: %d \n', baseFileName,n);
     %pause;
@@ -42,22 +40,23 @@ for k = 1 : length(theFiles)
     fprintf(fid, '%d', n);
     fclose(fid);
     
-    %Guardem en una variable en numero de dits de la imatge
+    %Guardem en una variable el numero real de dits de la imatge
     dits = extract(baseFileName,1);
     dits = str2double(dits);
     
-    %Comparem amb els dits que hem detectat
+    %Comparem amb els dits que hem detectat i contem els errors
     if(n ~= dits)
         dolentes = dolentes + 1; 
     end
     
+    %Apliquem algoritme 7 per calcular la fscore de la imatge
     [fscore, recall, precision] = algo7(n,dits);
     
+    %Guardem els valors per calcular la Macro-F1
     macroF1 = macroF1 + fscore;
     macroRec = macroRec + recall;
     macroPrec = macroPrec + precision;
     
-    fprintf("MacroF1: %f --- Rec: %f ---- Prec: %f \n", fscore, recall, precision);
 end
 
 %Accuracy
@@ -73,5 +72,4 @@ fprintf("\n****Summary****\nMacro-Precision: %.3f \n", macroPrec);
 fprintf("Macro-recall: %.3f  \n", macroRec);
 fprintf("\nMacro-F1: %.3f \n", macroF1);
 fprintf("Percentatge acert: %.3d \n", acc);
-
-
+%toc
