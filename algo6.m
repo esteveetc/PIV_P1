@@ -72,7 +72,7 @@ macroPrec = (macroPrec / length(theFiles))*100;
 fprintf("\n****Summary****\nMacro-Precision: %.3f \n", macroPrec);
 fprintf("Macro-recall: %.3f  \n", macroRec);
 fprintf("\nMacro-F1: %.3f \n", macroF1);
-fprintf("Percentatge acert: %.3d \n", acc);
+fprintf("Percentatge d'encert: %.3d \n", acc);
 %toc
 
 end
