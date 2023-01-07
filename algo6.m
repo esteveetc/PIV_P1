@@ -33,11 +33,10 @@ dolentes = 0;
         %Apliquem algoritme 5 i mostrem per per pantalla els dits detecats
         n=algo5(fullFileName);
         fprintf('Processed image %s  -->  Number of fingers: %d \n', baseFileName,n);
-        %pause;
 
         %Guardem en un fitxers els dits detectats de cada imatge
         fileNameCut = erase(baseFileName, ".bmp");
-        fid = fopen(sprintf('Predictions/%s.txt', fileNameCut), 'w');
+        fid = fopen(sprintf('Finger/%s.txt', fileNameCut), 'w');
         fprintf(fid, '%d', n);
         fclose(fid);
 

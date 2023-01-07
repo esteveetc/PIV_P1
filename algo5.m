@@ -88,7 +88,7 @@ if(areaa>0)
     cropErode = imerode(ImCrop,SE4);
     areaa=bwarea(cropErode);
     areaa = areaa /(rows*cols);
-    fprintf('Àrea = %f\n', areaa);
+    % fprintf('Àrea = %f\n', areaa);
     
     if(areaa>0 && n<=2 && areaa>0 && areaa<=0.01)
         n=n+1;
